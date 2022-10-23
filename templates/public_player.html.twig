@@ -7,21 +7,28 @@
     <title>Stream Player</title>
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-    {{ encore_entry_link_tags('publicPlayer') }}
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    {{ encore_entry_link_tags('videojs-contrib-hls') }}
+    {{ encore_entry_link_tags('videojs-contrib-hls.min') }}
 </head>
 <body>
-<div id="buttonWrapper" class="h-screen flex items-center justify-center text-lg text-gray-700">
-    <button type="button" id="playButton" class="flex flex-col items-center uppercase font-semibold tracking-wide p-4">
-        <span id="buttonIcon"></span>
-        Play stream
-    </button>
-</div>
 
-<script type="text/javascript">
-    var stream_url = '{{ url|raw }}';
+<video id=example-video width=960 height=540 class="video-js vjs-default-skin" controls>
+  <source
+     src="{{ url|raw }}"
+     type="application/x-mpegURL">
+</video>
+<script src="video.js"></script>
+<script src="videojs.hls.min.js"></script>
+<script>
+var player = videojs('example-video');
+player.play();
 </script>
-{{ encore_entry_script_tags('publicPlayer') }}
+
+
+{{ encore_entry_script_tags('videojs-contrib-hls') }}
+{{ encore_entry_script_tags('videojs-contrib-hls.min') }}
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </body>
 </html>
 

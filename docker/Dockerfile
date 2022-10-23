@@ -1,5 +1,6 @@
 FROM node:alpine AS frontend-builder
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
 COPY . /app
 WORKDIR /app
 
