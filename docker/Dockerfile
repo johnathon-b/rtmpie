@@ -1,6 +1,6 @@
 FROM node:alpine AS frontend-builder
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_ALLOW_SUPERUSER 1
 COPY . /app
 WORKDIR /app
 
@@ -72,6 +72,7 @@ ENV MERCURE_URL http://caddy/.well-known/mercure
 ENV RTMP_THUMBNAILS_BASE_URL http://rtmp/thumbnails/
 ENV RTMP_CONTROL_MODULE_BASE_URL http://rtmp/control/
 ENV RTMP_HTTP_FLV_BASE_URL /live
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN composer install --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader; \
     composer dump-autoload --no-dev --classmap-authoritative; \
